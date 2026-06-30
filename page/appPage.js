@@ -11,8 +11,8 @@ class appPage {
     }
 
     async login(username, password) {
-        await this.driver.findElement(By.css(locators.login.inputUsername.value)).sendKeys(username);
-        await this.driver.findElement(By.css(locators.login.inputPassword.value)).sendKeys(password);
+        await this.driver.findElement(By.css(locators.login.usernameInput.value)).sendKeys(username);
+        await this.driver.findElement(By.css(locators.login.passwordInput.value)).sendKeys(password);
         await this.driver.findElement(By.css(locators.login.loginButton.value)).click();
     }
 

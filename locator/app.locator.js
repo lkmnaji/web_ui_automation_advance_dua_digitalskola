@@ -1,9 +1,9 @@
 const locators = {
     url: 'https://www.saucedemo.com/',
     login: {
-        inputUsername: { type: 'css', value: '#user-name' },
-        inputPassword: { type: 'css', value: '#password' },
-        buttonLogin: { type: 'css', value: '#login-button' },
+        usernameInput: { type: 'css', value: '#user-name' },
+        passwordInput: { type: 'css', value: '#password' },
+        loginButton: { type: 'css', value: '#login-button' },
         errorMessage: { type: 'css', value: '[data-test="error"]' }
     },
     inventory: {

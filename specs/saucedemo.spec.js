@@ -2,7 +2,7 @@ const { Builder } = require('selenium-webdriver');
 const { expect } = require('chai');
 const AppPage = require('../page/appPage');
 const ScreenshotPage = require('../page/screenshotPage');
-const VisualRegressionHelper = require('../utilities/visualRegressionHelper');
+const VisualRegressionHelper = require('../utilities/visualHelper');
 
 describe('test automation sauce demo', function () {
     let driver;
@@ -41,7 +41,7 @@ describe('test automation sauce demo', function () {
         await appPage.login('invalid_user', 'secret_sauce');
         
         const errorMsg = await appPage.getErrorMessage();
-        expect(errorMsg).to.include('password dan username tidak sesuai');
+        expect(errorMsg).to.include('Username and password do not match');
 
         await screenshot.takeFullScreenshot('current/negative_invalid_user.png');
         const vrResult = await visualRegression.compareImages('negative_invalid_user.png');
@@ -52,7 +52,7 @@ describe('test automation sauce demo', function () {
         await appPage.login('standard_user', 'wrong_password');
         
         const errorMsg = await appPage.getErrorMessage();
-        expect(errorMsg).to.include('password dan username tidak sesuai');
+        expect(errorMsg).to.include('Username and password do not match');
 
         await screenshot.takeFullScreenshot('current/negative_wrong_pass.png');
         const vrResult = await visualRegression.compareImages('negative_wrong_pass.png');
@@ -63,7 +63,7 @@ describe('test automation sauce demo', function () {
         await appPage.login('locked_out_user', 'secret_sauce');
         
         const errorMsg = await appPage.getErrorMessage();
-        expect(errorMsg).to.include('Sorry, failed');
+        expect(errorMsg).to.include('Sorry, this user has been locked out');
 
         await screenshot.takeFullScreenshot('current/negative_locked_user.png');
         const vrResult = await visualRegression.compareImages('negative_locked_user.png');
